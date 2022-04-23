@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery-3.5.1.min.js"></script>
+
+
+    <title>acceuil</title>
+    <style>
+        body {
+            background: url(../images/fond3.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        h1 {
+            font-family: "French Script MT";
+            font-size: 90px;
+            color: rgb(27, 243, 8);
+            padding-left: 50px;
+        }
+        
+        .arr_plan {
+            display: none;
+            position: absolute;
+            background: #333;
+        }
+        
+        .f_modale {
+            background: #fff;
+            border: #000 solid 1px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px #444444;
+            display: none;
+            height: 220px;
+            left: 30%;
+            padding: 10px;
+            position: absolute;
+            top: 25%;
+            width: 500px;
+        }
+        
+        .fermer {
+            color: red;
+            cursor: pointer;
+            display: block;
+            font-size: 12px;
+            font-weight: bold;
+            text-align: right;
+        }
+        
+        .fermer:hover {
+            text-decoration: underline;
+        }
+        
+        img {
+            margin-right: 15px;
+        }
+        
+        h3 {
+            background-color: #ccc;
+            margin-top: 5px;
+            padding-left: 15px;
+        }
+    </style>
+</head>
+
+<body onload="afficherdateHeure()">
+    <br><br>
+    <h4 id="dateheure"></h4>
+    <br><br><br>
+    <!--button class="btn btn-danger" id="ouvrir_f">OUVRIR MODAL</button-->
+    <br>
+    <h1>"L'habitude devient second nature!"</h1>
+
+    <div class="arr_plan"> </div>
+    <div class="f_modale">
+        <span class="fermer">Fermer</span>
+        <h3>Fenetre modale</h3>
+        <img src="../images/ok.png" alt="">
+
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#ouvrir_f').click(function() {
+                $('.arr_plan , .f_modale').css('display', 'block');
+                $('.arr_plan').animate({
+                    'opacity': '.5'
+                }, 350);
+                $('.f_modale').animate({
+                    'opacity': '1'
+                }, 3500);
+            });
+            $('.fermer , .arr_plan').click(function(e) {
+                $('.arr_plan, .f_modale').animate({
+                        'opacity': '0'
+                    }, 350,
+                    function() {
+                        $('.arr_plan, .f_modale').css('display', 'none');
+                    });
+            });
+        });
+    </script>
+
+    <script>
+        function afficherdateHeure() {
+            var dateGlobal = new Date();
+            var annee = dateGlobal.getFullYear();
+            var dthr = document.getElementById('dateheure');
+            dthr.innerHTML = annee;
+        }
+
+        function afficherChaqueSeconde() {
+
+        }
+    </script>
+</body>
+
+</html>
